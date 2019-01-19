@@ -3,13 +3,14 @@ require('date')
 
 class Purchase
 
-attr_reader :user_id
+attr_reader :user_id, :merchant_id
 attr_accessor :id, :amount, :merchant, :date_picked, :time_picked, :type
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @amount = options['amount'].to_i
     @merchant = options['merchant']
+    @merchant_id = options['merchant_id']
     @date_picked = options['date']
     @time_picked = options['time']
     @type = options['type']
@@ -20,10 +21,11 @@ attr_accessor :id, :amount, :merchant, :date_picked, :time_picked, :type
   # current_date = DateTime.now.strftime("%d/%m/%Y")
 
   def save
-    sql = "INSERT INTO purchases(amount, merchant, date_picked, time_picked, type, user_id)
-    VALUES ($1, $2, $3, $4, $5, $6)
+    sql = "INSERT INTO purchases(amount, merchant, merchant_id, date_picked, time_picked,
+    type, user_id)
+    VALUES ($1, $2, $3, $4, $5, $6, $7)
     RETURNING id"
-    values = [@amount, @merchant, @date_picked, @time_picked, @type, @user_id]
+    values = [@amount, @merchant, @merchant_id, @date_picked, @time_picked, @type, @user_id]
     result = SqlRunner.run(sql, values)
     id = result.first['id']
     @id = id
@@ -48,9 +50,9 @@ attr_accessor :id, :amount, :merchant, :date_picked, :time_picked, :type
   end
 
   def update() #
-    sql = "UPDATE purchases SET (amount, merchant, date_picked, time_picked, type, user_id)
-    = ($1, $2, $3, $4, $5, $6) WHERE id = $7"
-    values = [@amount, @merchant, @date_picked, @time_picked, @type, @user_id, @id]
+    sql = "UPDATE purchases SET (amount, merchant, date_picked, time_picked, type)
+    = ($1, $2, $3, $4, $5) WHERE id = $6"
+    values = [@amount, @merchant, @date_picked, @time_picked, @type, @id]
     SqlRunner.run(sql, values)
   end
 
@@ -59,6 +61,7 @@ attr_accessor :id, :amount, :merchant, :date_picked, :time_picked, :type
     values = [@id]
     SqlRunner.run(sql, values)
   end
+
 
 
 end

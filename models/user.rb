@@ -55,6 +55,13 @@ attr_accessor :name, :budget
     return data.map {|spend| Purchase.new(spend)}
   end
 
+  def total_of_purchases
+    sql = "SELECT SUM(amount) FROM purchases
+    WHERE id = $1"
+    values = [@user_id]
+    SqlRunner.run(sql, values)
+  end
+
   def update() #
     sql = "UPDATE users SET (name, budget)
     = ($1, $2) WHERE id = $3"

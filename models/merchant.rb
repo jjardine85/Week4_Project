@@ -9,14 +9,13 @@ attr_accessor :name, :type
     @id = options['id'].to_i if options['id']
     @name = options['name']
     @type = options['type']
-    @purchase_id = options['purchase_id'].to_i
   end
 
   def save
-    sql = "INSERT INTO merchants(name, type, purchase_id)
-    VALUES ($1, $2, $3)
+    sql = "INSERT INTO merchants(name, type)
+    VALUES ($1, $2)
     RETURNING id"
-    values = [@name, @type, @purchase_id]
+    values = [@name, @type]
     result = SqlRunner.run(sql, values)
     @id = result.first['id']
   end
@@ -25,6 +24,12 @@ attr_accessor :name, :type
     sql = "SELECT * FROM merchants"
     result = SqlRunner.run(sql)
     return result.map { |merchant| Merchant.new(merchant)}
+  end
+
+  def self.merchants
+    sql = "SELECT DISTINCT name FROM merchants"
+    result = SqlRunner.run(sql)
+    return result.map { |merchant| Merchant.new(merchant) }
   end
 
   def self.delete_all
