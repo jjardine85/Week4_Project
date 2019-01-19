@@ -3,15 +3,15 @@ require('date')
 
 class Purchase
 
-attr_reader :amount, :merchant, :date, :time, :type, :user_id
-attr_accessor :id
+attr_reader :user_id
+attr_accessor :id, :amount, :merchant, :date_picked, :time_picked, :type
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @amount = options['amount'].to_i
     @merchant = options['merchant']
-    @date = options['date'].to_i
-    @time = options['time'].to_i
+    @date_picked = options['date']
+    @time_picked = options['time']
     @type = options['type']
     @user_id = options['user_id'].to_i
   end
@@ -20,13 +20,44 @@ attr_accessor :id
   # current_date = DateTime.now.strftime("%d/%m/%Y")
 
   def save
-    sql = "INSERT INTO purchases(amount, merchant, date, time, type, user_id)
+    sql = "INSERT INTO purchases(amount, merchant, date_picked, time_picked, type, user_id)
     VALUES ($1, $2, $3, $4, $5, $6)
     RETURNING id"
-    values = [@amount, @merchant, @date, @time, @type, @user_id]
+    values = [@amount, @merchant, @date_picked, @time_picked, @type, @user_id]
     result = SqlRunner.run(sql, values)
     id = result.first['id']
     @id = id
+  end
+
+  def self.all
+    sql = "SELECT * FROM purchases"
+    result = SqlRunner.run(sql)
+    return result.map { |purchase| Purchase.new(purchase)}
+  end
+
+  def self.delete_all
+    sql = "DELETE FROM purchases"
+    SqlRunner.run(sql)
+  end
+
+  def read
+    sql = "SELECT * FROM purchases WHERE id = $1"
+    values = [@id]
+    result = SqlRunner.run(sql, values)
+    return result.map {|purchase| Purchase.new(purchase)}
+  end
+
+  def update() #
+    sql = "UPDATE purchases SET (amount, merchant, date_picked, time_picked, type, user_id)
+    = ($1, $2, $3, $4, $5, $6) WHERE id = $7"
+    values = [@amount, @merchant, @date_picked, @time_picked, @type, @user_id, @id]
+    SqlRunner.run(sql, values)
+  end
+
+  def delete
+    sql = "DELETE FROM purchases WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)
   end
 
 
