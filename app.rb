@@ -1,28 +1,25 @@
 require('sinatra')
 require('sinatra/reloader') if development?
 require('pry')
-require_relative('models/merchant')
-require_relative('models/purchase')
-require_relative('models/user')
-also_reload('models/*')
+require_relative('controllers/merchant_controller')
+require_relative('controllers/purchase_controller')
+require_relative('controllers/new_user_controller')
+require_relative('controllers/existing_user_controller')
+set :public_folder, 'public'
 
 
 get '/' do
-  erb(:home)
+  erb(:index)
 end
 
 # INDEX
-get '/new' do
-  erb(:new)
-end
+
 #
-get '/existing' do
-  erb(:existing)
-end
+
 # NEW
 # get '/existing/:id' do
 #   # show everything in database related to user :id
-#   
+#
 #   erb( :existing )
 # end
 #
