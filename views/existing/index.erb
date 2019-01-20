@@ -1,8 +1,12 @@
 <h1>This is erb :existing</h1>
 
-after user selected, account overview shown
-can add spend from here
-check all added spend, total of spend<br>
+this screen should show which user to select
+<h1>Select a user</h1>
+
+<% for user in @all_users %>
+     Name:  <a href="/existing/<%= user.id %> "> <%= user.name%> </a>
+      <% end %>
+      <br>
 
 <a href="/">back to home</a>
-<a href="/add-spend">should be a button at bottom</a>
+<a href="/overview">the next screen should be account overview, same point as a new user</a>

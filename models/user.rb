@@ -26,11 +26,12 @@ attr_accessor :name, :budget
     return result.map { |user| User.new(user)}
   end
 
-  def read
+  def self.find( id )
     sql = "SELECT * FROM users WHERE id = $1"
-    values = [@id]
-    result = SqlRunner.run(sql, values)
-    return result.map {|user| User.new(user)}
+    values = [id]
+    user = SqlRunner.run( sql, values )
+    result = User.new( user.first )
+    return result
   end
 
   def self.delete_all
@@ -58,8 +59,9 @@ attr_accessor :name, :budget
   def total_of_purchases
     sql = "SELECT SUM(amount) FROM purchases
     WHERE id = $1"
-    values = [@user_id]
-    SqlRunner.run(sql, values)
+    values = [@id]
+    result = SqlRunner.run(sql, values)
+    return result
   end
 
   def update() #

@@ -42,9 +42,9 @@ attr_accessor :id, :amount, :merchant, :date_picked, :time_picked, :type
     SqlRunner.run(sql)
   end
 
-  def read
+  def self.read
     sql = "SELECT * FROM purchases WHERE id = $1"
-    values = [@id]
+    values = [id]
     result = SqlRunner.run(sql, values)
     return result.map {|purchase| Purchase.new(purchase)}
   end

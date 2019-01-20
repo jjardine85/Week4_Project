@@ -43,9 +43,9 @@ attr_accessor :name, :type
     SqlRunner.run(sql, values)
   end
 
-  def read
+  def self.read
     sql = "SELECT * FROM merchants WHERE id = $1"
-    values = [@id]
+    values = [id]
     result = SqlRunner.run(sql, values)
     return result.map {|merchant| Merchant.new(merchant)}
   end

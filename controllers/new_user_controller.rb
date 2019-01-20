@@ -9,3 +9,8 @@ also_reload('../models/*')
 get '/new' do
   erb(:"new/index")
 end
+
+post '/new' do
+  User.new(params).save
+  redirect to '/'
+end
