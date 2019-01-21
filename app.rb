@@ -3,8 +3,7 @@ require('sinatra/reloader') if development?
 require('pry')
 require_relative('controllers/merchant_controller')
 require_relative('controllers/purchase_controller')
-require_relative('controllers/new_user_controller')
-require_relative('controllers/existing_user_controller')
+require_relative('controllers/user_controller')
 set :public_folder, 'public'
 
 
@@ -14,7 +13,9 @@ end
 
 # INDEX
 
-
+get '/add' do
+  erb(:"existing/add")
+end
 
 # NEW
 # get '/existing/:id' do

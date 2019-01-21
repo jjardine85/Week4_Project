@@ -6,16 +6,29 @@ require_relative('../models/purchase.rb')
 require_relative('../models/user.rb')
 also_reload('../models/*')
 
+get '/new' do
+  erb(:"new/index")
+end
+
+post '/new' do
+  User.new(params).save
+  redirect to '/existing'
+end
+
 get '/existing' do
   @all_users = User.all
-  erb(:"existing/index")
+  erb(:"existing/existing")
 end
 
 get '/existing/:id' do
   @user = User.find(params['id'])
-  erb(:"existing/overview")
+  erb(:"existing/user")
 end
 
+post '/add' do
+  Purchase.new(params).save
+  redirect to '/existing'
+end
 # get '/user/:id' do
 #   # Retrieve one pizza order from the db
 #   @pizza_order = PizzaOrder.find( params[:id] )

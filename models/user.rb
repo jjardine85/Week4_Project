@@ -51,17 +51,19 @@ attr_accessor :name, :budget
     INNER JOIN users
     ON purchases.user_id = users.id
     WHERE purchases.user_id = $1"
-    values = [@id]
+    values = [id]
     data = SqlRunner.run(sql, values)
     return data.map {|spend| Purchase.new(spend)}
   end
 
-  def total_of_purchases
-    sql = "SELECT SUM(amount) FROM purchases
-    WHERE id = $1"
-    values = [@id]
-    result = SqlRunner.run(sql, values)
-    return result
+  def total_of_purchases(id)
+    sql = "SELECT SUM(purchases.amount)
+    FROM purchases
+    INNER JOIN users
+    ON purchases.user_id = users.id
+    WHERE purchases.user_id = $1"
+    values = [id]
+    SqlRunner.run(sql, values)[0]["sum"]
   end
 
   def update() #

@@ -22,10 +22,10 @@ attr_accessor :id, :amount, :merchant, :date_picked, :time_picked, :type
 
   def save
     sql = "INSERT INTO purchases(amount, merchant, merchant_id, date_picked, time_picked,
-    type, user_id)
-    VALUES ($1, $2, $3, $4, $5, $6, $7)
+    type)
+    VALUES ($1, $2, $3, $4, $5)
     RETURNING id"
-    values = [@amount, @merchant, @merchant_id, @date_picked, @time_picked, @type, @user_id]
+    values = [@amount, @merchant, @merchant_id, @date_picked, @time_picked, @type]
     result = SqlRunner.run(sql, values)
     id = result.first['id']
     @id = id
