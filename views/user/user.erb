@@ -1,0 +1,21 @@
+<h1>Spending details</h1>
+
+<p>Name: <%= @user.name %> </p>
+<p>Budget: £<%= @user.budget %></p>
+<p>Spending: <% for purchase in @user.purchases %> <br>
+  <%= purchase.date_picked %> - £<%= purchase.amount%> @ <%= purchase.merchant%> - <%= purchase.type%>
+   <% end %> </p>
+<p>Total: £<%= @user.total_of_purchases(@user.id) %></p>
+<p>Remaining Budget: NEED TO CODE <br><br>
+
+
+Warning: Deleting this user will remove them and all of their spends
+      <form action="/existing" method="post">
+        <input type="hidden" name="id" value=<%= @user.id %> >
+        <input type="submit" value="delete" />
+      </form>
+
+<a href="/purchase/<%= @user.id %>">add purchase</a>
+<br><br>
+<a class=nav href="/">Home</a>
+<a class=nav href="/existing">Users</a>

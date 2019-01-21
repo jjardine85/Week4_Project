@@ -59,43 +59,43 @@ merchant40 = Merchant.new({"name" => "Bank", "type" => "utilities"})
 merchant1.save
 merchant2.save
 merchant3.save
-merchant4.save
-merchant5.save
-merchant6.save
-merchant7.save
-merchant8.save
-merchant9.save
-merchant10.save
-merchant11.save
-merchant12.save
-merchant13.save
-merchant14.save
-merchant15.save
-merchant16.save
-merchant17.save
-merchant18.save
-merchant19.save
-merchant20.save
-merchant21.save
-merchant22.save
-merchant23.save
-merchant24.save
-merchant25.save
-merchant26.save
-merchant27.save
-merchant28.save
-merchant29.save
-merchant30.save
-merchant31.save
-merchant32.save
-merchant33.save
-merchant34.save
-merchant35.save
-merchant36.save
-merchant37.save
-merchant38.save
-merchant39.save
-merchant40.save
+# merchant4.save
+# merchant5.save
+# merchant6.save
+# merchant7.save
+# merchant8.save
+# merchant9.save
+# merchant10.save
+# merchant11.save
+# merchant12.save
+# merchant13.save
+# merchant14.save
+# merchant15.save
+# merchant16.save
+# merchant17.save
+# merchant18.save
+# merchant19.save
+# merchant20.save
+# merchant21.save
+# merchant22.save
+# merchant23.save
+# merchant24.save
+# merchant25.save
+# merchant26.save
+# merchant27.save
+# merchant28.save
+# merchant29.save
+# merchant30.save
+# merchant31.save
+# merchant32.save
+# merchant33.save
+# merchant34.save
+# merchant35.save
+# merchant36.save
+# merchant37.save
+# merchant38.save
+# merchant39.save
+# merchant40.save
 
 purchase1 = Purchase.new({"amount" => 10, "merchant" => merchant3.name,
             "merchant_id" => merchant3.id, "date" => "2019-01-01",

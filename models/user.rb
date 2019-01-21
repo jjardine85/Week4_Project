@@ -38,10 +38,10 @@ attr_accessor :name, :budget
     sql = "DELETE FROM users"
     SqlRunner.run(sql)
   end
-
-  def delete
+  
+  def self.delete(id)
     sql = "DELETE FROM users WHERE id = $1"
-    values = [@id]
+    values = [id]
     SqlRunner.run(sql, values)
   end
 

@@ -1,0 +1,21 @@
+<h1> ADD A MERCHANT </h1>
+
+
+  <% for merchant in @merchants %>
+       Name: <%= merchant.name%> | Type: <%= merchant.type%><br>
+        <% end %>
+<br>
+<br>
+<form action="/merchant" method="post">
+
+  <label for="name">Where did you pay cash?</label>
+  <input type="text" id="name" name="name" placeholder="Name?">
+
+  <label for="type">What was this for?</label>
+  <input type="text" id="type" name="type" placeholder="Shopping? Bill?" >
+
+  <input type="submit" value="Add Retailer">
+</form>
+
+<a class=nav href="/">Home</a>
+<a class=nav href="/existing">Users</a>

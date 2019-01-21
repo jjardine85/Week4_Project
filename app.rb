@@ -4,18 +4,19 @@ require('pry')
 require_relative('controllers/merchant_controller')
 require_relative('controllers/purchase_controller')
 require_relative('controllers/user_controller')
+also_reload('../models/*')
 set :public_folder, 'public'
-
 
 get '/' do
   erb(:index)
 end
 
+error 404 do
+  erb(:error)
+end
 # INDEX
 
-get '/add' do
-  erb(:"existing/add")
-end
+
 
 # NEW
 # get '/existing/:id' do

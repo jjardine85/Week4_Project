@@ -43,7 +43,7 @@ attr_accessor :name, :type
     SqlRunner.run(sql, values)
   end
 
-  def self.read
+  def self.find
     sql = "SELECT * FROM merchants WHERE id = $1"
     values = [id]
     result = SqlRunner.run(sql, values)

@@ -1,0 +1,19 @@
+body {
+  font-family: 'Nanum Gothic', sans-serif;
+  font-size: 1em;
+  text-align: center;
+
+}
+
+h1 {
+  font-family: 'Nanum Gothic', sans-serif;
+  font-size: 2em;
+  text-align: center;
+  padding: 20px;
+}
+
+a.nav {
+  font-family: 'Nanum Gothic', sans-serif;
+  font-size: 2em;
+  text-align: center;
+}

@@ -5,30 +5,38 @@ require_relative('../models/merchant.rb')
 require_relative('../models/purchase.rb')
 require_relative('../models/user.rb')
 also_reload('../models/*')
+set :public_folder, 'public'
 
 get '/new' do
-  erb(:"new/index")
+  erb(:"user/new")
 end
 
 post '/new' do
   User.new(params).save
-  redirect to '/existing'
+  redirect '/existing'
 end
 
 get '/existing' do
   @all_users = User.all
-  erb(:"existing/existing")
+  erb(:"user/existing")
 end
 
 get '/existing/:id' do
   @user = User.find(params['id'])
-  erb(:"existing/user")
+  erb(:"user/user")
 end
 
-post '/add' do
-  Purchase.new(params).save
-  redirect to '/existing'
+post '/existing' do
+  User.delete(params['id'])
+  redirect "/"
 end
+
+# post '/add' do
+#   binding.pry
+#   Purchase.new(params).save
+#   erb(:"existing/add")
+#   redirect to '/existing'
+# end
 # get '/user/:id' do
 #   # Retrieve one pizza order from the db
 #   @pizza_order = PizzaOrder.find( params[:id] )
