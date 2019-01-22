@@ -18,6 +18,7 @@ get '/purchase/:id' do
 end
 
 post '/purchase' do
+  puts params
   Purchase.new(params).save
   redirect to '/existing'
 end

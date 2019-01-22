@@ -37,7 +37,7 @@ attr_accessor :name, :type
     SqlRunner.run(sql)
   end
 
-  def delete
+  def delete()
     sql = "DELETE FROM merchants WHERE id = $1"
     values = [@id]
     SqlRunner.run(sql, values)
@@ -45,7 +45,7 @@ attr_accessor :name, :type
 
   def self.find
     sql = "SELECT * FROM merchants WHERE id = $1"
-    values = [id]
+    values = [@id]
     result = SqlRunner.run(sql, values)
     return result.map {|merchant| Merchant.new(merchant)}
   end

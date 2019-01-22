@@ -1,10 +1,11 @@
 <h1>Select a user</h1>
-
+<section>
 <% for user in @all_users %>
      Name:  <a href="/existing/<%= user.id %> "> <%= user.name%> <br> </a>
 
       <% end %>
-      <br>
 
+</section>
+<br><br><br><br>
 <a class=nav href="/">Home</a>
-<a class=nav href="#"></a>
+<a class=nav href="/merchant">Merchants</a>

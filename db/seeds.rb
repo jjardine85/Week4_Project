@@ -98,24 +98,19 @@ merchant3.save
 # merchant40.save
 
 purchase1 = Purchase.new({"amount" => 10, "merchant" => merchant3.name,
-            "merchant_id" => merchant3.id, "date" => "2019-01-01",
-            "time" => "14:00", "type" => merchant3.type, "user_id" => user1.id})
+            "merchant_id" => merchant3.id, "date_picked" => "now", "type" => merchant3.type, "user_id" => user1.id})
 purchase1.save
 purchase2 = Purchase.new({"amount" => 5, "merchant" => merchant3.name,
-            "merchant_id" => merchant3.id, "date" => "2019-01-01",
-            "time" => "12:00", "type" => merchant3.type, "user_id" => user2.id})
+            "merchant_id" => merchant3.id, "date_picked" => "04-04-2019", "type" => merchant3.type, "user_id" => user2.id})
 purchase2.save
 purchase3 = Purchase.new({"amount" => 50, "merchant" => merchant1.name,
-            "merchant_id" => merchant1.id, "date" => "2019-02-01",
-            "time" => "12:30", "type" => merchant3.type, "user_id" => user3.id})
+            "merchant_id" => merchant1.id, "date_picked" => "03-03-2019", "type" => merchant3.type, "user_id" => user3.id})
 purchase3.save
 purchase4 = Purchase.new({"amount" => 70, "merchant" => merchant1.name,
-            "merchant_id" => merchant1.id, "date" => "2019-02-01",
-            "time" => "12:30", "type" => merchant3.type, "user_id" => user3.id})
+            "merchant_id" => merchant1.id, "date_picked" => "02-02-2019", "type" => merchant3.type, "user_id" => user3.id})
 purchase4.save
 purchase5 = Purchase.new({"amount" => 700, "merchant" => merchant2.name,
-            "merchant_id" => merchant2.id, "date" => "2019-02-01",
-            "time" => "12:30", "type" => merchant2.type, "user_id" => user3.id})
+            "merchant_id" => merchant2.id, "date_picked" => "2019-01-01", "type" => merchant2.type, "user_id" => user3.id})
 purchase5.save
 
 

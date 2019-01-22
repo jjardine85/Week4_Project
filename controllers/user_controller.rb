@@ -23,6 +23,7 @@ end
 
 get '/existing/:id' do
   @user = User.find(params['id'])
+
   erb(:"user/user")
 end
 
@@ -30,6 +31,17 @@ post '/existing' do
   User.delete(params['id'])
   redirect "/"
 end
+
+get '/edit/:id' do
+  @user = User.find(params['id'])
+  erb(:"user/edit")
+end
+
+# post '/edit' do
+#   @user.update
+#   @user.save
+#   redirect to '/existing'
+# end
 
 # post '/add' do
 #   binding.pry
@@ -42,4 +54,3 @@ end
 #   @pizza_order = PizzaOrder.find( params[:id] )
 #   # Display the details of that order
 #   erb( :show )
-# end

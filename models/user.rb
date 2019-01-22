@@ -38,7 +38,7 @@ attr_accessor :name, :budget
     sql = "DELETE FROM users"
     SqlRunner.run(sql)
   end
-  
+
   def self.delete(id)
     sql = "DELETE FROM users WHERE id = $1"
     values = [id]
@@ -72,8 +72,9 @@ attr_accessor :name, :budget
     values = [@name, @budget, @id]
     SqlRunner.run(sql, values)
   end
-  # def total_purchase_amount
-  #
+
+  # def remaining_budget
+  #   @budget -= total_of_purchases
   # end
 
 end

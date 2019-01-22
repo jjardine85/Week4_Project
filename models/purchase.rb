@@ -1,18 +1,18 @@
 require_relative('../db/sql_runner')
+require('pry')
 require('date')
 
 class Purchase
 
 attr_reader :user_id
-attr_accessor :id, :amount, :merchant, :date_picked, :time_picked, :type, :merchant_id
+attr_accessor :id, :amount, :merchant, :merchant_id, :date_picked, :type, :merchant_id
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @amount = options['amount'].to_i
     @merchant = options['merchant']
     @merchant_id = options['merchant_id']
-    @date_picked = options['date']
-    @time_picked = options['time']
+    @date_picked = options['date_picked']
     @type = options['type']
     @user_id = options['user_id'].to_i
   end
@@ -21,11 +21,11 @@ attr_accessor :id, :amount, :merchant, :date_picked, :time_picked, :type, :merch
   # current_date = DateTime.now.strftime("%d/%m/%Y")
 
   def save
-    sql = "INSERT INTO purchases(amount, merchant, merchant_id, date_picked, time_picked,
+    sql = "INSERT INTO purchases(amount, merchant, merchant_id, date_picked,
     type, user_id)
-    VALUES ($1, $2, $3, $4, $5, $6, $7)
+    VALUES ($1, $2, $3, $4, $5, $6)
     RETURNING id"
-    values = [@amount, @merchant, @merchant_id, @date_picked, @time_picked, @type, @user_id]
+    values = [@amount, @merchant, @merchant_id, @date_picked, @type, @user_id]
     result = SqlRunner.run(sql, values)
     @id = result.first['id'].to_i
   end
@@ -41,17 +41,18 @@ attr_accessor :id, :amount, :merchant, :date_picked, :time_picked, :type, :merch
     SqlRunner.run(sql)
   end
 
-  def self.read
+  def self.find(id)
     sql = "SELECT * FROM purchases WHERE id = $1"
     values = [id]
-    result = SqlRunner.run(sql, values)
-    return result.map {|purchase| Purchase.new(purchase)}
+    purchase = SqlRunner.run(sql, values)
+    result = Purchase.new(purchase.first)
+    return result
   end
 
   def update() #
-    sql = "UPDATE purchases SET (amount, merchant, date_picked, time_picked, type)
-    = ($1, $2, $3, $4, $5) WHERE id = $6"
-    values = [@amount, @merchant, @date_picked, @time_picked, @type, @id]
+    sql = "UPDATE purchases SET (amount, merchant, merchant_id date_picked, type)
+    = ($1, $2, $3, $4) WHERE id = $5"
+    values = [@amount, @merchant, @merchant_id, @date_picked, @type, @id]
     SqlRunner.run(sql, values)
   end
 
@@ -61,6 +62,22 @@ attr_accessor :id, :amount, :merchant, :date_picked, :time_picked, :type, :merch
     SqlRunner.run(sql, values)
   end
 
+  def purchase_date
+    sql = "SELECT date_picked FROM purchases WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
 
+  def merchant
+    sql = "SELECT merchants.name
+    FROM purchases
+    INNER JOIN users
+    ON purchases.user_id = users.id
+    INNER JOIN merchants
+    ON merchants.id = purchases.merchant_id
+     WHERE purchases.id = $1"
+     values = [@id]
+     SqlRunner.run(sql, values)
+  end
 
 end

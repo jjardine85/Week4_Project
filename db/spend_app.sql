@@ -21,7 +21,6 @@ CREATE TABLE purchases (
   merchant VARCHAR(255),
   merchant_id INT8 REFERENCES merchants(id) ON DELETE CASCADE,
   date_picked DATE,
-  time_picked TIME,
   type VARCHAR(255),
   user_id INT8 REFERENCES users(id) ON DELETE CASCADE
 );

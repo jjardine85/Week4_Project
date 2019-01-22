@@ -1,4 +1,6 @@
 <h1>Add a purchase</h1>
+<section>
+
 
 <form action="/purchase" method="post">
   <input type="hidden" name="user_id" value=<%= @user.id %> >
@@ -9,25 +11,30 @@
     Merchant:
       <select name="merchant_id">
         <% for merchant in @merchant %>
-        <option value="merchant.name"><%= merchant.name %></option>
+        <option value="<%=merchant.id%>"><%= merchant.name %> </option>
+
         <% end %>
       </select>
       </label>
 
-  <input id="merchant" name="merchant_id" > << This is for merchant_id, how would a user know this?
-
   <label for="date">When:</label>
   <input type="date" id="date" min="0" name="date_picked" placeholder="When?" >
 
-  <label for="type">What kind:</label>
-  <input type="text" id="type" min="0" name="type" placeholder="Retail/Bill/Groceries?" >
+  <label>
+    What kind:
+      <select name="type">
+        <% for merchant in @merchant %>
+        <option value="<%=merchant.type%>"><%= merchant.type %> </option>
 
-<BR>THIS APPEARS TO ADD SOME STUFF TO DATABASE IN SOME CRAZY FORMAT?!??
-<BR>
+        <% end %>
+      </select>
+      </label>
+
 
   <input type="submit" value="Add Spend">
-</form>
-
+</form><br><br>
+Retailer not present? Add retailer:
+</section>
 <a class=nav href="/">Home</a>
-Retailer not present? Add retailer
 <a class=nav href="/merchant">Add retailer</a>
+<br><br><br>

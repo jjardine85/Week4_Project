@@ -1,21 +1,27 @@
 <h1>Spending details</h1>
+<section>
 
 <p>Name: <%= @user.name %> </p>
 <p>Budget: £<%= @user.budget %></p>
 <p>Spending: <% for purchase in @user.purchases %> <br>
-  <%= purchase.date_picked %> - £<%= purchase.amount%> @ <%= purchase.merchant%> - <%= purchase.type%>
+  <%= purchase.date_picked %> - £<%= purchase.amount%> @ <%= %> - <%= purchase.type%>
    <% end %> </p>
-<p>Total: £<%= @user.total_of_purchases(@user.id) %></p>
-<p>Remaining Budget: NEED TO CODE <br><br>
+<p>Total Spent: £<%= @user.total_of_purchases(@user.id) %></p>
+<p>Remaining Budget: <%=  %> <br><br>
+  broken:merchant:  for merchant in purchase.merchant %>
 
-
-Warning: Deleting this user will remove them and all of their spends
-      <form action="/existing" method="post">
+   merchant['name'] %>
+   end %><br><br>
+<a href="/purchase/<%= @user.id %>">add purchase</a><br>
+<!-- <a href="/edit/<%= @user.id%> ">edit user</a><br> -->
+Warning: Deleting this user will remove them and all of their payments
+      <form class="enter" action="/existing" method="post">
         <input type="hidden" name="id" value=<%= @user.id %> >
         <input type="submit" value="delete" />
       </form>
 
-<a href="/purchase/<%= @user.id %>">add purchase</a>
-<br><br>
+
+<br>
+</section>
 <a class=nav href="/">Home</a>
 <a class=nav href="/existing">Users</a>

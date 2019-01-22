@@ -9,6 +9,7 @@ set :public_folder, 'public'
 
 get '/merchant' do
   @merchants = Merchant.all
+  # @merchant = Merchant.find(params)
  erb(:"merchants/index")
 end
 
@@ -16,3 +17,12 @@ post '/merchant' do
   Merchant.new(params).save
   redirect '/existing'
 end
+
+# get '/merchant/:id' do
+#  erb(:"merchants/edit")
+# end
+
+# post '/merchant' do
+#   merchant.delete
+#   redirect '/existing'
+# end
