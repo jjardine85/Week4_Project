@@ -1,16 +1,16 @@
 <h1>Select a user</h1>
 
 <section>
-  
-  <form action="/delete" method="post">
+
+  <form action="/users/delete" method="post">
     <input class="warn" type="submit" value="Delete all users?" />
   </form><br><br>
 
     <% for user in @all_users %>
-      Name: <a class=links href="/existing/<%=user.id %>"> <%=user.name%></a><br>
+      Name: <a class=links href="/users/existing/<%=user.id %>"> <%=user.name%></a><br>
     <% end %>
 
 </section>
 <br><br><br><br>
 <a class=nav href="/">Home</a>
-<a class=nav href="/new">Add User</a>
+<a class=nav href="/users/new">Add User</a>

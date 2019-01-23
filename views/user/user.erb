@@ -20,17 +20,17 @@
 <% end %>
 
   <br><br><br><br>
-  
+
 <a href="/purchases/<%= @user.id %>">add purchase</a><br>
 <!-- <a href="/edit/<%= @user.id%> ">edit user</a><br> -->
 
 <br>
 Warning: Deleting this user will remove them and all of their payments
-      <form class="enter" action="/existing" method="post">
+      <form class="enter" action="/users/existing" method="post">
         <input type="hidden" name="id" value=<%= @user.id %> >
         <input class="warn"type="submit" value="delete" />
       </form>
 <br>
 </section>
 <a class=nav href="/">Home</a>
-<a class=nav href="/existing">Users</a>
+<a class=nav href="/users/existing">Users</a>

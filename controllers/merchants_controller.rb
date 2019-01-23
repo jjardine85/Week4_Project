@@ -15,7 +15,7 @@ end
 
 post '/merchants' do
   Merchant.new(params).save
-  redirect '/existing'
+  redirect '/users/existing'
 end
 
 get '/merchants/:id' do
@@ -30,5 +30,5 @@ end
 
 post '/delete-merchants' do # delete
   Merchant.delete_all
-  redirect to '/existing'
+  redirect to '/users/existing'
 end

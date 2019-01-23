@@ -7,39 +7,39 @@ require_relative('../models/user.rb')
 also_reload('../models/*')
 set :public_folder, 'public'
 
-get '/new' do
+get '/users/new' do
   erb(:"user/new")
 end
 
-post '/new' do
+post '/users/new' do
   User.new(params).save
-  redirect '/existing'
+  redirect '/users/existing'
 end
 
-get '/existing' do
+get '/users/existing' do
   @all_users = User.all
   erb(:"user/existing")
 end
 
-get '/existing/:id' do
+get '/users/existing/:id' do
   @user = User.find(params['id'])
 
   erb(:"user/user")
 end
 
-post '/existing' do
+post '/users/existing' do
   User.delete(params['id'])
   redirect "/"
 end
 
-get '/edit/:id' do
+get '/users/edit/:id' do
   @user = User.find(params['id'])
   erb(:"user/edit")
 end
 
-post '/delete' do # delete
+post '/users/delete' do # delete
   User.delete_all
-  redirect to '/existing'
+  redirect to '/users/existing'
 end
 
 #  post '/edit' do

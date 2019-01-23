@@ -20,5 +20,5 @@ end
 post '/purchases' do
   puts params
   Purchase.new(params).save
-  redirect to '/existing'
+  redirect to '/users/existing'
 end
