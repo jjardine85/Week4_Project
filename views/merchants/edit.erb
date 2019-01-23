@@ -1,4 +1,12 @@
-<form class="enter" action="/merchant" method="post">
-  <input type="hidden" name="id" value=<%= merchant.id %> >
-  <input type="submit" value="delete" />
-</form><br>
+<h1>Edit a Merchant</h1>
+
+<form action="/merchant/:id" method="post">
+
+  <label for="name">Delete merchant?</label>
+  <input type="text" id="name" name="name" placeholder="Name?" required>
+
+  <label for="type">What was this for?</label>
+  <input type="text" id="type" name="type" placeholder="Shopping? Bill?" required>
+
+  <input class="enter" type="submit" value="Delete">
+</form>

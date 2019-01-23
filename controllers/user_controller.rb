@@ -37,7 +37,12 @@ get '/edit/:id' do
   erb(:"user/edit")
 end
 
-# post '/edit' do
+post '/delete' do # delete
+  User.delete_all
+  redirect to '/existing'
+end
+
+#  post '/edit' do
 #   @user.update
 #   @user.save
 #   redirect to '/existing'

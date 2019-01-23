@@ -2,8 +2,8 @@ require_relative("../db/sql_runner.rb")
 
 class Merchant
 
-attr_reader :id, :purchase_id
-attr_accessor :name, :type
+attr_reader :purchase_id
+attr_accessor :name, :type, :id
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
@@ -37,17 +37,18 @@ attr_accessor :name, :type
     SqlRunner.run(sql)
   end
 
-  def delete()
+  def self.delete
     sql = "DELETE FROM merchants WHERE id = $1"
     values = [@id]
     SqlRunner.run(sql, values)
   end
 
-  def self.find
+  def self.find(id)
     sql = "SELECT * FROM merchants WHERE id = $1"
-    values = [@id]
-    result = SqlRunner.run(sql, values)
-    return result.map {|merchant| Merchant.new(merchant)}
+    values = [id]
+    merch = SqlRunner.run(sql, values)
+    result = Merchant.new( merch.first )
+    return result
   end
 
   def update() #

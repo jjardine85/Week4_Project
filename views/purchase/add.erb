@@ -6,7 +6,7 @@
   <input type="hidden" name="user_id" value=<%= @user.id %> >
 
   <label for="amount">Amount spent:</label>
-  <input type="text" id="amount" name="amount" placeholder="How much?">
+  <input type="text" id="amount" name="amount" placeholder="How much?" required>
   <label>
     Merchant:
       <select name="merchant_id">
@@ -18,7 +18,7 @@
       </label>
 
   <label for="date">When:</label>
-  <input type="date" id="date" min="0" name="date_picked" placeholder="When?" >
+  <input type="date" id="date" min="0" name="date_picked" placeholder="When?" required>
 
   <label>
     What kind:
@@ -31,7 +31,7 @@
       </label>
 
 
-  <input type="submit" value="Add Spend">
+  <input class= "enter" type="submit" value="Add Spend">
 </form><br><br>
 Retailer not present? Add retailer:
 </section>

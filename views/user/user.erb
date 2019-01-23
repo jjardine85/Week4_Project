@@ -1,23 +1,34 @@
 <h1>Spending details</h1>
 <section>
 
-<p>Name: <%= @user.name %> </p>
-<p>Budget: £<%= @user.budget %></p>
-<p>Spending: <% for purchase in @user.purchases %> <br>
-  <%= purchase.date_picked %> - £<%= purchase.amount%> @ <%= %> - <%= purchase.type%>
-   <% end %> </p>
-<p>Total Spent: £<%= @user.total_of_purchases(@user.id) %></p>
-<p>Remaining Budget: <%=  %> <br><br>
-  broken:merchant:  for merchant in purchase.merchant %>
+<p>Name: <%= @user.name %> </p><BR>
+<p>Budget: £<%= budget = @user.budget.to_i %></p><BR>
+<p>Spending:
+  <% for purchase in @user.purchases %> <br>
+    <%= purchase.date_picked %> - £<%= purchase.amount%> @ <%= purchase.merchant[0]["name"]%> - <%= purchase.type%>
+  <% end %>
+ </p><br>
+<p>Total Spent: £<%=total = @user.total_of_purchases(@user.id).to_i %></p><BR>
+<p>Remaining Budget: £<%=new_budget = budget - total%>
+<% if new_budget < 0%>
+<%= "You're over your budget!!"%>
+<% else%>  <%="You're within your budget"%>
+<% end %>
+  <br><br>
 
-   merchant['name'] %>
-   end %><br><br>
+
+  <br><br>
+
+
+
 <a href="/purchase/<%= @user.id %>">add purchase</a><br>
 <!-- <a href="/edit/<%= @user.id%> ">edit user</a><br> -->
+
+
 Warning: Deleting this user will remove them and all of their payments
       <form class="enter" action="/existing" method="post">
         <input type="hidden" name="id" value=<%= @user.id %> >
-        <input type="submit" value="delete" />
+        <input class="warn"type="submit" value="delete" />
       </form>
 
 

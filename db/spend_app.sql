@@ -18,7 +18,6 @@ CREATE TABLE merchants (
 CREATE TABLE purchases (
   id SERIAL8 PRIMARY KEY,
   amount INT2,
-  merchant VARCHAR(255),
   merchant_id INT8 REFERENCES merchants(id) ON DELETE CASCADE,
   date_picked DATE,
   type VARCHAR(255),
