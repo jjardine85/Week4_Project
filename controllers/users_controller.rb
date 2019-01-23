@@ -47,15 +47,3 @@ end
 #   @user.save
 #   redirect to '/existing'
 # end
-
-# post '/add' do
-#   binding.pry
-#   Purchase.new(params).save
-#   erb(:"existing/add")
-#   redirect to '/existing'
-# end
-# get '/user/:id' do
-#   # Retrieve one pizza order from the db
-#   @pizza_order = PizzaOrder.find( params[:id] )
-#   # Display the details of that order
-#   erb( :show )

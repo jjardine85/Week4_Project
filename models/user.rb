@@ -73,8 +73,4 @@ attr_accessor :name, :budget
     SqlRunner.run(sql, values)
   end
 
-  # def remaining_budget
-  #   @budget -= total_of_purchases
-  # end
-
 end

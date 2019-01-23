@@ -2,20 +2,18 @@
 
 <section>
   <form action="/delete-merchants" method="post">
-    <input class="warn" type="submit" value="Delete all merchants?" />
+    <input class="warn" type="submit" value="Delete all merchants?"/>
   </form><br>
   <% for merchant in @merchants %>
-       Name: <%= merchant.name%> | Type: <%= merchant.type%> | <form action="/merchant/:id" method="post">
-         <input class="enter" type="submit" value="Delete">
-       </form>
-
+  Name: <%= merchant.name%> | Type: <%= merchant.type %> | <form action="/merchants/<%= merchant.id%>" method="post">
+    <input class="enter" type="submit" value="Delete">
+  </form>
+  <br>
+  <% end %>
 <br>
 
-        <% end %>
-<br>
-<br>
 <h2>Add a merchant:</h2><br>
-<form action="/merchant" method="post">
+<form action="/merchants" method="post">
 
   <label for="name">Where did you pay cash?</label>
   <input type="text" id="name" name="name" placeholder="Name?" required>

@@ -1,37 +1,35 @@
 <h1>Spending details</h1>
+
 <section>
 
-<p>Name: <%= @user.name %> </p><BR>
-<p>Budget: £<%= budget = @user.budget.to_i %></p><BR>
+<p>Name: <%= @user.name %> | Budget: £<%= budget = @user.budget.to_i %></p><BR>
+
 <p>Spending:
   <% for purchase in @user.purchases %> <br>
-    <%= purchase.date_picked %> - £<%= purchase.amount%> @ <%= purchase.merchant[0]["name"]%> - <%= purchase.type%>
+    <%= purchase.date_picked %>: £<%=purchase.amount%> @ <%= purchase.merchant[0]["name"]%> for <%= purchase.type%>
   <% end %>
  </p><br>
+
 <p>Total Spent: £<%=total = @user.total_of_purchases(@user.id).to_i %></p><BR>
-<p>Remaining Budget: £<%=new_budget = budget - total%>
+
+<p>Remaining Budget: £<%=new_budget = budget - total%>.
+
 <% if new_budget < 0%>
-<%= "You're over your budget!!"%>
+<%="You're over your budget!!"%>
 <% else%>  <%="You're within your budget"%>
 <% end %>
-  <br><br>
 
-
-  <br><br>
-
-
-
-<a href="/purchase/<%= @user.id %>">add purchase</a><br>
+  <br><br><br><br>
+  
+<a href="/purchases/<%= @user.id %>">add purchase</a><br>
 <!-- <a href="/edit/<%= @user.id%> ">edit user</a><br> -->
 
-
+<br>
 Warning: Deleting this user will remove them and all of their payments
       <form class="enter" action="/existing" method="post">
         <input type="hidden" name="id" value=<%= @user.id %> >
         <input class="warn"type="submit" value="delete" />
       </form>
-
-
 <br>
 </section>
 <a class=nav href="/">Home</a>

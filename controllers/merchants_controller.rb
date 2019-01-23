@@ -7,24 +7,25 @@ require_relative('../models/user.rb')
 also_reload('../models/*')
 set :public_folder, 'public'
 
-get '/merchant' do
+get '/merchants' do
   @merchants = Merchant.all
 
  erb(:"merchants/index")
 end
 
-post '/merchant' do
+post '/merchants' do
   Merchant.new(params).save
   redirect '/existing'
 end
 
-get '/merchant/:id' do
+get '/merchants/:id' do
+  @merchant = Merchant.find(params['id'])
   erb(:"merchants/edit")
 end
 
-post '/merchant/:id' do
-  Merchant.delete
-  redirect '/existing'
+post '/merchants/:id' do
+  Merchant.delete(params['id'])
+  redirect '/merchants'
 end
 
 post '/delete-merchants' do # delete

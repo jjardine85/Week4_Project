@@ -7,17 +7,17 @@ require_relative('../models/user.rb')
 also_reload('../models/*')
 set :public_folder, 'public'
 
-get '/purchase' do
+get '/purchases' do
   erb(:"purchase/add")
 end
 
-get '/purchase/:id' do
+get '/purchases/:id' do
   @user = User.find(params['id'])
   @merchant = Merchant.all
   erb(:"purchase/add")
 end
 
-post '/purchase' do
+post '/purchases' do
   puts params
   Purchase.new(params).save
   redirect to '/existing'

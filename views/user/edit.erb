@@ -1,16 +1,23 @@
 <h1> Edit a user </h1>
 
 <p>Name: <%= @user.name %> </p>
+
 <form class="enter" action="/edit" method="post">
   <input type="hidden" name="id" value=<%= @user.id %> >
+
   <label for="name">Wrong name?</label>
   <input type="text" id="name" name="name" placeholder="New name?" >
+
   <input type="submit" value="Change name">
 </form>
+
 <p>Budget: £<%= @user.budget %></p>
+
 <form class="enter" action="/edit" method="post">
   <input type="hidden" name="id" value=<%= @user.id %> >
+
   <label for="budget">New budget:</label>
   <input type="number" id="budget" min="0" name="budget" placeholder="How much?" >
+
   <input type="submit" value="Change budget">
 </form>

@@ -1,21 +1,21 @@
 <h1>Add a purchase</h1>
+
 <section>
 
-
-<form action="/purchase" method="post">
-  <input type="hidden" name="user_id" value=<%= @user.id %> >
+<form action="/purchases" method="post">
+<input type="hidden" name="user_id" value=<%= @user.id %> >
 
   <label for="amount">Amount spent:</label>
   <input type="text" id="amount" name="amount" placeholder="How much?" required>
+
   <label>
     Merchant:
       <select name="merchant_id">
         <% for merchant in @merchant %>
         <option value="<%=merchant.id%>"><%= merchant.name %> </option>
-
         <% end %>
       </select>
-      </label>
+    </label>
 
   <label for="date">When:</label>
   <input type="date" id="date" min="0" name="date_picked" placeholder="When?" required>
@@ -25,10 +25,9 @@
       <select name="type">
         <% for merchant in @merchant %>
         <option value="<%=merchant.type%>"><%= merchant.type %> </option>
-
         <% end %>
       </select>
-      </label>
+  </label>
 
 
   <input class= "enter" type="submit" value="Add Spend">
@@ -36,5 +35,5 @@
 Retailer not present? Add retailer:
 </section>
 <a class=nav href="/">Home</a>
-<a class=nav href="/merchant">Add retailer</a>
+<a class=nav href="/merchants">Add retailer</a>
 <br><br><br>
