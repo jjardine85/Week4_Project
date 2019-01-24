@@ -1,1 +1,1 @@
-web: bundle exec ruby app.rb -f $4567
+app: bundle exec ruby app.rb -f $4567
