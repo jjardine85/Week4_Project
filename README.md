@@ -1,6 +1,6 @@
 # Week4_Project. Spending Tracker - Welcome to Spend@.
 
-A simple application for tracking any payments you have made. The application is accessed via a web browser. A Ruby gem (Sinatra) is used as the web framework which sends and receives requests to a local database.
+A simple application for tracking any payments you have made. The application is accessed via a web browser. A Ruby gem (Sinatra) is used as the web framework which sends and receives requests to a database on the user's machine.
 
 ## Getting Started.
 
@@ -30,7 +30,7 @@ ruby app.rb -> web browser -> localhost:4567
 
 ### Prerequisites
 
-A number of ruby gems are required to run the files included. Minitest, PG, Sinatra, Pry and Sinatra Reloader have all been used in development of the app. 
+A number of ruby gems are required to run the files included. Minitest, PG, Sinatra, Pry and Sinatra Reloader have all been used in development of the app.
 
 ```
 Minitest - https://rubygems.org/gems/minitest/versions/5.8.4
@@ -53,7 +53,7 @@ These tests are present to ensure the models in the specs file are completing th
 ## Built With
 
 * [Ruby] http://ruby-doc.com/ - A dynamic, interpreted, reflective, object-oriented, general-purpose programming language.
-* [Sinatra] http://sinatrarb.com/ - Web framework 
+* [Sinatra] http://sinatrarb.com/ - Web framework
 * [atom] https://atom.io/ - Code editor
 * [PostgreSQL] https://www.postgresql.org/ - Open source object-relational database management system.
 * [Postico] https://eggerapps.at/postico/ - A Modern PostgreSQL Client for the Mac
