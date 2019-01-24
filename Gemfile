@@ -8,6 +8,4 @@ gem 'sinatra'
 
 gem 'minitest'
 
-gem 'sinatra/contrib'
-
 gem 'pry'
