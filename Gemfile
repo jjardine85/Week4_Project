@@ -10,4 +10,4 @@ gem 'minitest'
 
 gem 'sinatra/contrib'
 
-gem pry
+gem 'pry'
