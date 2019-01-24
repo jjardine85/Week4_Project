@@ -4,9 +4,9 @@
 
 <p>Name: <%= @user.name %> | Budget: £<%= budget = @user.budget.to_i %></p><BR>
 
-<p>Spending:
+<p>Spent@:
   <% for purchase in @user.purchases %> <br>
-    <%= purchase.date_picked %>: £<%=purchase.amount%> @ <%= purchase.merchant[0]["name"]%> for <%= purchase.type%>
+    <% date = purchase.date_picked%> <%=Date.parse(date).strftime("%d/%m/%Y")%>: £<%=purchase.amount%> @ <%= purchase.merchant[0]["name"]%> for <%= purchase.type%>
   <% end %>
  </p><br>
 
@@ -16,13 +16,13 @@
 
 <% if new_budget < 0%>
 <%="You're over your budget!!"%>
-<% else%>  <%="You're within your budget"%>
+<% else%>  <%="You're within your budget."%>
 <% end %>
 
   <br><br><br><br>
 
 <a href="/purchases/<%= @user.id %>">add purchase</a><br>
-<!-- <a href="/edit/<%= @user.id%> ">edit user</a><br> -->
+<!-- <a href="/users/edit/<%= @user.id%> ">edit user</a><br> -->
 
 <br>
 Warning: Deleting this user will remove them and all of their payments

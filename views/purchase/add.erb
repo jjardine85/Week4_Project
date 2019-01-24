@@ -6,7 +6,7 @@
 <input type="hidden" name="user_id" value=<%= @user.id %> >
 
   <label for="amount">Amount spent:</label>
-  <input type="text" id="amount" name="amount" placeholder="How much?" required>
+  <input type="number" min=0 id="amount" name="amount" placeholder="How much?" required>
 
   <label>
     Merchant:
