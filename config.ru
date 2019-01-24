@@ -1,4 +1,4 @@
-require"app.rb"
+require_relative 'app.rb'
 require 'rubygems'
 require 'sinatra'
 

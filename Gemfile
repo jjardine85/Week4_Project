@@ -10,5 +10,3 @@ gem 'minitest'
 gem 'pry'
 
 gem 'thin'
-
-gem 'heroku'
