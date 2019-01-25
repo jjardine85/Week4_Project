@@ -1,10 +1,8 @@
 require('sinatra')
 require('sinatra/reloader') if development?
-require('pry')
 require_relative('controllers/merchants_controller')
 require_relative('controllers/purchases_controller')
 require_relative('controllers/users_controller')
-also_reload('../models/*')
 set :public_folder, 'public'
 
 get '/' do

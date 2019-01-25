@@ -1,7 +1,7 @@
 require_relative("../models/merchant")
 require_relative("../models/purchase")
 require_relative("../models/user")
-require('pry')
+
 
 Merchant.delete_all
 Purchase.delete_all
@@ -107,7 +107,3 @@ purchase4 = Purchase.new({"amount" => 70, "merchant_id" => merchant1.id, "date_p
 purchase4.save
 purchase5 = Purchase.new({"amount" => 700, "merchant_id" => merchant2.id, "date_picked" => "2019-01-01", "type" => merchant2.type, "user_id" => user3.id})
 purchase5.save
-
-
-binding.pry
-nil
