@@ -61,7 +61,7 @@ These tests are present to ensure the models in the specs file are completing th
 
 ## Contributing
 
-This is the first project I have completed where I used Sinatra and linking it to a database. If you have any suggestions or improvements, please email me @ james.jardine@gmx.com. If you would like to download the included code and make any changes, please go ahead :)
+This is the first project I have completed where I used Sinatra and linked it to a database. If you have any suggestions or improvements, please email me @ james.jardine@gmx.com. If you would like to download the included code and make any changes, please go ahead :)
 
 ## Authors
 
